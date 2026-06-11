@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dem Jeyaa – Nettoyage professionnel, industriel et bionettoyage médical à Dakar, Sénégal. Devis gratuit, intervention rapide.">
+<title>Dem Jeyaa – Propreté & Confort | Nettoyage Professionnel & Bionettoyage Médical</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu: #0d3b6e;
+    --bleu-mid: #1a5fa8;
+    --bleu-light: #e8f1fb;
+    --vert: #6abc44;
+    --vert-dark: #4a9e2a;
+    --vert-light: #eaf6df;
+    --teal: #0d9488;
+    --orange: #f59e0b;
+    --gris: #f7f9fc;
+    --gris-dark: #e2e8f0;
+    --texte: #1e293b;
+    --texte-soft: #64748b;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--texte);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gris-dark);
+    padding: 0 5%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 24px rgba(13,59,110,0.10); }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo img { height: 44px; }
+  .nav-logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--bleu);
+    line-height: 1.1;
+  }
+  .nav-logo-text span { color: var(--vert); display: block; font-size: 11px; font-weight: 400; font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: 1px; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--texte-soft);
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--bleu); background: var(--bleu-light); }
+  .nav-links .nav-cta {
+    background: var(--vert);
+    color: white !important;
+    border-radius: 10px;
+    padding: 9px 18px;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+  .nav-links .nav-cta:hover { background: var(--vert-dark); transform: translateY(-1px); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--bleu); border-radius: 2px; transition: 0.3s; }
+
+  /* ===== PAGES ===== */
+  .page { display: none; padding-top: 70px; }
+  .page.active { display: block; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, var(--bleu) 0%, #1a5fa8 55%, #0a5a3c 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 5% 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 75% 40%, rgba(106,188,68,0.25) 0%, transparent 55%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 40%);
+  }
+  .hero-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .hero-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.07;
+    background: white;
+  }
+  .hero-shape-1 { width: 400px; height: 400px; top: -100px; right: -80px; }
+  .hero-shape-2 { width: 200px; height: 200px; bottom: 40px; right: 200px; }
+  .hero-shape-3 { width: 120px; height: 120px; top: 60%; left: 5%; }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(106,188,68,0.2);
+    border: 1px solid rgba(106,188,68,0.4);
+    border-radius: 40px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #a8e06a;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--vert); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(38px, 5.5vw, 62px);
+    color: white;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .hero h1 em { color: var(--vert); font-style: normal; }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 520px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--vert);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--vert-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(106,188,68,0.35); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 52px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    flex-wrap: wrap;
+  }
+  .hero-stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--vert);
+    line-height: 1;
+  }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* ===== SECTION COMMUNE ===== */
+  .section { padding: 80px 5%; }
+  .section-alt { background: var(--gris); }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--vert);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--bleu);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--texte-soft);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  /* ===== SERVICES GRID ===== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .service-card {
+    background: white;
+    border: 1.5px solid var(--gris-dark);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: all 0.25s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: transparent; box-shadow: 0 12px 40px rgba(13,59,110,0.12); transform: translateY(-4px); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card.c-bleu::before { background: var(--bleu-mid); }
+  .service-card.c-vert::before { background: var(--vert); }
+  .service-card.c-teal::before { background: var(--teal); }
+  .service-card.c-orange::before { background: var(--orange); }
+
+  .service-icon {
+    width: 50px; height: 50px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+  .service-icon.bg-bleu { background: var(--bleu-light); }
+  .service-icon.bg-vert { background: var(--vert-light); }
+  .service-icon.bg-teal { background: #e1f5ee; }
+  .service-icon.bg-orange { background: #fef3c7; }
+  .service-icon.bg-pink { background: #fce7f3; }
+  .service-icon.bg-purple { background: #ede9fe; }
+
+  .service-card h3 { font-size: 17px; font-weight: 700; color: var(--bleu); margin-bottom: 8px; }
+  .service-card p { font-size: 14px; color: var(--texte-soft); line-height: 1.6; }
+
+  /* ===== BIONETTOYAGE HERO ===== */
+  .bio-hero {
+    background: linear-gradient(135deg, var(--bleu) 0%, #1a4a7a 100%);
+    border-radius: 20px;
+    padding: 48px;
+    color: white;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bio-hero::after {
+    content: '🏥';
+    position: absolute;
+    right: 48px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 120px;
+    opacity: 0.12;
+  }
+  .bio-hero h2 { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 700; margin-bottom: 14px; }
+  .bio-hero p { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.85); max-width: 560px; }
+  .bio-badges { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+  .bio-badge {
+    background: rgba(106,188,68,0.2);
+    border: 1px solid rgba(106,188,68,0.35);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #a8e06a;
+  }
+
+  /* ===== PROTOCOL STEPS ===== */
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    background: #fff8f0;
+    border: 1.5px solid #fcd9a0;
+    border-radius: 16px;
+    padding: 28px 24px;
+  }
+  .step-item { text-align: center; position: relative; }
+  .step-item:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -10px; top: 14px;
+    color: var(--orange);
+    font-size: 18px;
+  }
+  .step-num {
+    width: 36px; height: 36px;
+    background: var(--orange);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px;
+    margin: 0 auto 10px;
+  }
+  .step-label { font-size: 12px; color: #92400e; font-weight: 600; line-height: 1.4; }
+
+  /* ===== ABOUT ===== */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-visual {
+    background: linear-gradient(135deg, var(--bleu), var(--bleu-mid));
+    border-radius: 24px;
+    padding: 40px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: rgba(106,188,68,0.15);
+    border-radius: 50%;
+  }
+  .about-visual-logo {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 28px;
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+  .about-visual-logo img { height: 60px; display: block; }
+  .about-quote {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    line-height: 1.4;
+    font-style: italic;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+  }
+  .about-stats-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .about-stat-mini {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+  }
+  .about-stat-mini .num { font-family: 'Fraunces', serif; font-size: 28px; color: var(--vert); font-weight: 700; line-height: 1; }
+  .about-stat-mini .lbl { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 4px; font-weight: 500; }
+
+  .values-list { display: flex; flex-direction: column; gap: 16px; }
+  .value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 20px;
+    background: white;
+    border-radius: 14px;
+    border-left: 4px solid var(--vert);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .value-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .value-item h4 { font-size: 15px; font-weight: 700; color: var(--bleu); margin-bottom: 4px; }
+  .value-item p { font-size: 13px; color: var(--texte-soft); line-height: 1.6; }
+
+  /* ===== ZONES ===== */
+  .zones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-top: 32px;
+  }
+  .zone-pill {
+    background: white;
+    border: 1.5px solid var(--gris-dark);
+    border-radius: 12px;
+    padding: 16px 14px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--bleu);
+    font-size: 15px;
+    transition: all 0.2s;
+  }
+  .zone-pill:hover { border-color: var(--vert); background: var(--vert-light); }
+  .zone-pill span { display: block; font-size: 20px; margin-bottom: 6px; }
+
+  /* ===== CONTACT ===== */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .contact-icon {
+    width: 48px; height: 48px;
+    background: var(--bleu);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .contact-item h4 { font-size: 11px; color: var(--texte-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+  .contact-item p { font-size: 15px; font-weight: 600; color: var(--bleu); }
+  .contact-item a { color: var(--bleu); text-decoration: none; }
+  .contact-item a:hover { color: var(--vert); }
+
+  .contact-form-box {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 8px 40px rgba(13,59,110,0.08);
+  }
+  .contact-form-box h3 { font-family: 'Fraunces', serif; font-size: 22px; color: var(--bleu); margin-bottom: 22px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--texte); margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--gris-dark);
+    border-radius: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    color: var(--texte);
+    background: var(--gris);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--bleu-mid);
+    background: white;
+  }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit { width: 100%; padding: 14px; background: var(--vert); color: white; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .form-submit:hover { background: var(--vert-dark); transform: translateY(-1px); }
+
+  /* ===== WHATSAPP FLOAT ===== */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #25d366;
+    color: white;
+    padding: 14px 20px 14px 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+    transition: all 0.25s;
+  }
+  .whatsapp-float:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(37,211,102,0.5); }
+  .whatsapp-float svg { width: 22px; height: 22px; fill: white; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--bleu);
+    color: white;
+    padding: 48px 5% 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 24px;
+  }
+  .footer-brand img { height: 50px; margin-bottom: 14px; background: white; padding: 8px 12px; border-radius: 10px; }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 280px; }
+  .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--vert); margin-bottom: 14px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; }
+  .footer-col ul li a, .footer-col ul li span { font-size: 13px; color: rgba(255,255,255,0.7); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--vert); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.45); }
+
+  /* ===== MÉDICAL PAGE ===== */
+  .med-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .med-card {
+    background: var(--gris);
+    border-radius: 14px;
+    padding: 22px 20px;
+    border: 1.5px solid var(--gris-dark);
+    transition: all 0.2s;
+  }
+  .med-card:hover { border-color: var(--bleu-mid); background: white; box-shadow: 0 6px 24px rgba(13,59,110,0.08); }
+  .med-card-icon { font-size: 28px; margin-bottom: 12px; }
+  .med-card h4 { font-size: 15px; font-weight: 700; color: var(--bleu); margin-bottom: 6px; }
+  .med-card p { font-size: 13px; color: var(--texte-soft); line-height: 1.6; }
+
+  .engagements-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .eng-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--vert-light);
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--vert-dark);
+  }
+  .eng-item::before { content: '✓'; font-weight: 800; color: var(--vert); }
+
+  /* ===== DEVIS BANNER ===== */
+  .devis-banner {
+    background: linear-gradient(135deg, var(--vert-dark), var(--vert));
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+  }
+  .devis-banner h2 { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 700; margin-bottom: 12px; }
+  .devis-banner p { font-size: 16px; opacity: 0.9; margin-bottom: 28px; }
+  .devis-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--vert-dark);
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .devis-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.15); }
+
+  /* ===== MOBILE ===== */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 70px; left: 0; right: 0;
+    background: white;
+    padding: 16px 5%;
+    border-bottom: 1px solid var(--gris-dark);
+    z-index: 999;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 12px 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--texte);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+  .mobile-menu a:hover { background: var(--gris); }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .steps-row { grid-template-columns: 1fr 1fr; }
+    .step-item:not(:last-child)::after { display: none; }
+    .bio-hero { padding: 28px; }
+    .bio-hero::after { display: none; }
+    .hero { padding: 40px 5% 60px; }
+    .engagements-list { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 20px; }
+    .devis-banner { padding: 32px 20px; }
+    .contact-form-box { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <a href="#" class="nav-logo" onclick="showPage('accueil')">
+    <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAxtu8LudTthir4pEZWSg2wp1eYT_zi5DlJN6iIYDqKiv7Yd4b7xMcf8m1O6T43qV2v0FpSFFw73pWfKFwES6F7uwdTMu9xrEwKm-BjmS60MLHMGgtvdQsuW7TXR4mk0wanD3TaOgxGNTOTJIGz-_hQ9lTFUTz3T6aK5Pv2f666TRrHtFCrrMwD2HAPQkw=w16383" alt="Logo Dem Jeyaa" onerror="this.style.display='none'">
+    <div class="nav-logo-text">DEM JEYAA <span>Propreté & Confort</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('accueil')" class="active" id="nav-accueil">Accueil</a></li>
+    <li><a href="#" onclick="showPage('services')" id="nav-services">Services</a></li>
+    <li><a href="#" onclick="showPage('medical')" id="nav-medical">Bionettoyage Médical</a></li>
+    <li><a href="#" onclick="showPage('apropos')" id="nav-apropos">À propos</a></li>
+    <li><a href="#" onclick="showPage('contact')" id="nav-contact" class="nav-cta">Devis gratuit</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('accueil');toggleMobile()">🏠 Accueil</a>
+  <a href="#" onclick="showPage('services');toggleMobile()">🧹 Services</a>
+  <a href="#" onclick="showPage('medical');toggleMobile()">🏥 Bionettoyage Médical</a>
+  <a href="#" onclick="showPage('apropos');toggleMobile()">👥 À propos</a>
+  <a href="#" onclick="showPage('contact');toggleMobile()">📞 Devis gratuit</a>
+</div>
+
+<!-- ===== PAGE ACCUEIL ===== -->
+<div id="page-accueil" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-shapes">
+      <div class="hero-shape hero-shape-1"></div>
+      <div class="hero-shape hero-shape-2"></div>
+      <div class="hero-shape hero-shape-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Entreprise sénégalaise de nettoyage</div>
+      <h1>L'excellence de la <em>propreté</em> professionnelle</h1>
+      <p class="hero-sub">Nettoyage professionnel, industriel et bionettoyage médical à Dakar et dans tout le Sénégal. Des résultats irréprochables, une équipe qualifiée.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/221774371230" class="btn-primary" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="#" onclick="showPage('services')" class="btn-secondary">Nos services →</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-label">Domaines d'expertise</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">24h</div>
+          <div class="hero-stat-label">Délai d'intervention</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Satisfaction client</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">5+</div>
+          <div class="hero-stat-label">Villes au Sénégal</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services aperçu -->
+  <section class="section">
+    <div class="section-label">Ce que nous faisons</div>
+    <div class="section-title">Nos prestations</div>
+    <p class="section-desc">Une gamme complète de services adaptés à chaque environnement, du bureau au bloc opératoire.</p>
+    <div class="services-grid">
+      <div class="service-card c-bleu" onclick="showPage('services')">
+        <div class="service-icon bg-bleu">🏢</div>
+        <h3>Bureaux & locaux professionnels</h3>
+        <p>Entretien régulier de vos espaces de travail, salles de réunion, sanitaires et parties communes.</p>
+      </div>
+      <div class="service-card c-vert" onclick="showPage('services')">
+        <div class="service-icon bg-vert">🏗️</div>
+        <h3>Nettoyage industriel</h3>
+        <p>Intervention dans les usines, entrepôts et ateliers avec équipements haute performance.</p>
+      </div>
+      <div class="service-card c-teal" onclick="showPage('medical')">
+        <div class="service-icon bg-teal">🏥</div>
+        <h3>Bionettoyage médical</h3>
+        <p>Désinfection certifiée des établissements de santé selon les protocoles sanitaires les plus stricts.</p>
+      </div>
+      <div class="service-card c-orange" onclick="showPage('services')">
+        <div class="service-icon bg-orange">🔨</div>
+        <h3>Nettoyage fin de chantier</h3>
+        <p>Remise en état complète après travaux, rénovation ou aménagement de locaux.</p>
+      </div>
+      <div class="service-card c-bleu" onclick="showPage('services')">
+        <div class="service-icon bg-pink">🏠</div>
+        <h3>Maisons & appartements</h3>
+        <p>Nettoyage après déménagement, avant location ou entretien général des logements.</p>
+      </div>
+      <div class="service-card c-vert" onclick="showPage('services')">
+        <div class="service-icon bg-purple">🏘️</div>
+        <h3>Copropriétés & immeubles</h3>
+        <p>Entretien des parties communes, escaliers, couloirs, parkings et espaces verts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi nous -->
+  <section class="section section-alt">
+    <div class="section-label">Nos atouts</div>
+    <div class="section-title">Pourquoi choisir Dem Jeyaa ?</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:12px;">
+      <div style="background:white;border-radius:16px;padding:24px 20px;border-top:3px solid var(--vert);">
+        <div style="font-size:28px;margin-bottom:12px;">⚡</div>
+        <h4 style="font-size:16px;font-weight:700;color:var(--bleu);margin-bottom:8px;">Intervention rapide</h4>
+        <p style="font-size:14px;color:var(--texte-soft);">Disponibles 7j/7, nous intervenons dans les 24h pour toute demande urgente ou planifiée.</p>
+      </div>
+      <div style="background:white;border-radius:16px;padding:24px 20px;border-top:3px solid var(--bleu-mid);">
+        <div style="font-size:28px;margin-bottom:12px;">🎓</div>
+        <h4 style="font-size:16px;font-weight:700;color:var(--bleu);margin-bottom:8px;">Équipe formée</h4>
+        <p style="font-size:14px;color:var(--texte-soft);">Nos agents sont formés aux techniques professionnelles et aux protocoles d'hygiène certifiés.</p>
+      </div>
+      <div style="background:white;border-radius:16px;padding:24px 20px;border-top:3px solid var(--teal);">
+        <div style="font-size:28px;margin-bottom:12px;">🌿</div>
+        <h4 style="font-size:16px;font-weight:700;color:var(--bleu);margin-bottom:8px;">Produits éco-responsables</h4>
+        <p style="font-size:14px;color:var(--texte-soft);">Nous utilisons des produits biodégradables et homologués, respectueux de votre santé et de l'environnement.</p>
+      </div>
+      <div style="background:white;border-radius:16px;padding:24px 20px;border-top:3px solid var(--orange);">
+        <div style="font-size:28px;margin-bottom:12px;">💯</div>
+        <h4 style="font-size:16px;font-weight:700;color:var(--bleu);margin-bottom:8px;">Satisfaction garantie</h4>
+        <p style="font-size:14px;color:var(--texte-soft);">Nous ne quittons pas un site sans que votre satisfaction soit totale. Notre réputation en dépend.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="devis-banner">
+      <h2>Demandez votre devis gratuit</h2>
+      <p>Réponse sous 24h — Sans engagement — Tarifs clairs et compétitifs</p>
+      <a href="https://wa.me/221774371230" class="devis-btn" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#4a9e2a"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Contacter sur WhatsApp
+      </a>
+    </div>
+  </section>
+
+</div><!-- fin page accueil -->
+
+<!-- ===== PAGE SERVICES ===== -->
+<div id="page-services" class="page">
+  <section class="section">
+    <div class="section-label">Nos prestations</div>
+    <div class="section-title">Des services sur mesure<br>pour chaque besoin</div>
+    <p class="section-desc">Que vous soyez une entreprise, une clinique, un particulier ou une industrie, Dem Jeyaa dispose d'une solution adaptée.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+      <div class="service-card c-bleu" style="cursor:default;">
+        <div class="service-icon bg-bleu" style="font-size:26px;">🏢</div>
+        <h3>Bureaux & locaux professionnels</h3>
+        <p style="margin-bottom:14px;">Entretien quotidien ou hebdomadaire de vos espaces de travail.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;color:var(--texte-soft);">• Dépoussiérage et aspiration complète</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Nettoyage des surfaces et vitres</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Désinfection des sanitaires</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Gestion des déchets</li>
+        </ul>
+      </div>
+      <div class="service-card c-vert" style="cursor:default;">
+        <div class="service-icon bg-vert" style="font-size:26px;">🏗️</div>
+        <h3>Nettoyage industriel</h3>
+        <p style="margin-bottom:14px;">Intervention dans les usines, entrepôts et ateliers de production.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;color:var(--texte-soft);">• Dégraissage machines et sols</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Nettoyage haute pression</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Aspiration industrielle</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Traitement des sols techniques</li>
+        </ul>
+      </div>
+      <div class="service-card c-teal" style="cursor:default;">
+        <div class="service-icon bg-teal" style="font-size:26px;">🏘️</div>
+        <h3>Copropriétés & immeubles</h3>
+        <p style="margin-bottom:14px;">Entretien des parties communes et espaces partagés.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;color:var(--texte-soft);">• Halls, escaliers et couloirs</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Parkings et caves</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Entretien des espaces verts</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Collecte et tri des ordures</li>
+        </ul>
+      </div>
+      <div class="service-card c-orange" style="cursor:default;">
+        <div class="service-icon bg-orange" style="font-size:26px;">🔨</div>
+        <h3>Nettoyage fin de chantier</h3>
+        <p style="margin-bottom:14px;">Remise en état complète après travaux ou rénovation.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;color:var(--texte-soft);">• Évacuation des déchets et gravats</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Dépoussiérage intensif</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Nettoyage vitres et menuiseries</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Remise en état des sols</li>
+        </ul>
+      </div>
+      <div class="service-card c-bleu" style="cursor:default;">
+        <div class="service-icon bg-pink" style="font-size:26px;">🏠</div>
+        <h3>Maisons & appartements</h3>
+        <p style="margin-bottom:14px;">Nettoyage résidentiel de qualité professionnelle.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;color:var(--texte-soft);">• Après déménagement</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Avant location ou vente</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Entretien général</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Grand ménage de printemps</li>
+        </ul>
+      </div>
+      <div class="service-card c-vert" style="cursor:default;">
+        <div class="service-icon bg-purple" style="font-size:26px;">🪟</div>
+        <h3>Vitrerie & façades</h3>
+        <p style="margin-bottom:14px;">Nettoyage professionnel de toutes surfaces vitrées.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;color:var(--texte-soft);">• Vitres et baies vitrées</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Façades de bâtiments</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Traitement anti-calcaire</li>
+          <li style="font-size:13px;color:var(--texte-soft);">• Nettoyage en hauteur sécurisé</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Zones -->
+    <div style="margin-top:56px;">
+      <div class="section-label">Où nous intervenons</div>
+      <div class="section-title" style="font-size:28px;">Zones d'intervention</div>
+      <div class="zones-grid">
+        <div class="zone-pill"><span>🏙️</span>Dakar</div>
+        <div class="zone-pill"><span>🌆</span>Thiès</div>
+        <div class="zone-pill"><span>🌊</span>Mbour</div>
+        <div class="zone-pill"><span>🌇</span>Saint-Louis</div>
+        <div class="zone-pill"><span>🌴</span>Kaolack</div>
+        <div class="zone-pill"><span>📍</span>Et environs</div>
+      </div>
+    </div>
+
+    <div class="devis-banner" style="margin-top:48px;">
+      <h2>Besoin d'un devis ?</h2>
+      <p>Gratuit, rapide et sans engagement</p>
+      <a href="https://wa.me/221774371230" class="devis-btn" target="_blank">
+        Contacter sur WhatsApp
+      </a>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PAGE BIONETTOYAGE MÉDICAL ===== -->
+<div id="page-medical" class="page">
+  <section class="section">
+    <div class="section-label">Expertise spécialisée</div>
+    <div class="section-title">Bionettoyage Médical</div>
+
+    <div class="bio-hero">
+      <h2>Un service critique,<br>une exécution irréprochable</h2>
+      <p>Le bionettoyage médical est une démarche rigoureuse visant à éliminer les agents pathogènes — bactéries, virus, champignons — et à réduire les risques infectieux dans les environnements de santé. Nos agents sont formés aux protocoles sanitaires les plus stricts.</p>
+      <div class="bio-badges">
+        <span class="bio-badge">✓ Protocole désinfection certifié</span>
+        <span class="bio-badge">✓ Produits virucides & bactéricides</span>
+        <span class="bio-badge">✓ Équipements EPI complets</span>
+        <span class="bio-badge">✓ Traçabilité garantie</span>
+      </div>
+    </div>
+
+    <!-- Établissements -->
+    <div class="section-label" style="margin-top:40px;">Où nous intervenons</div>
+    <h3 style="font-family:'Fraunces',serif;font-size:24px;color:var(--bleu);margin-bottom:20px;">Les établissements que nous traitons</h3>
+    <div class="med-grid">
+      <div class="med-card">
+        <div class="med-card-icon">🏥</div>
+        <h4>Hôpitaux & Cliniques</h4>
+        <p>Blocs opératoires, salles de soins, chambres patients et couloirs de circulation.</p>
+      </div>
+      <div class="med-card">
+        <div class="med-card-icon">🔬</div>
+        <h4>Laboratoires</h4>
+        <p>Paillasses, zones de manipulation, salles stériles et équipements d'analyse.</p>
+      </div>
+      <div class="med-card">
+        <div class="med-card-icon">💊</div>
+        <h4>Pharmacies</h4>
+        <p>Officines, entrepôts pharmaceutiques et zones de stockage médicamenteux.</p>
+      </div>
+      <div class="med-card">
+        <div class="med-card-icon">🩺</div>
+        <h4>Centres de soins</h4>
+        <p>Cabinets médicaux, dentaires, kinésithérapie et radiologie.</p>
+      </div>
+      <div class="med-card">
+        <div class="med-card-icon">👶</div>
+        <h4>Maternités & EHPAD</h4>
+        <p>Nurseries, salles d'accouchement, zones néonatales et résidences médicalisées.</p>
+      </div>
+      <div class="med-card">
+        <div class="med-card-icon">🚑</div>
+        <h4>Urgences & Réanimation</h4>
+        <p>Désinfection rapide des zones critiques et à haute fréquentation.</p>
+      </div>
+    </div>
+
+    <!-- Protocole -->
+    <div style="margin-top:48px;">
+      <div class="section-label">Comment nous travaillons</div>
+      <h3 style="font-family:'Fraunces',serif;font-size:24px;color:var(--bleu);margin-bottom:20px;">Notre protocole en 5 étapes</h3>
+      <div class="steps-row">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-label">Évaluation des risques</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-label">Pré-désinfection</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-label">Nettoyage en profondeur</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-label">Désinfection totale</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-label">Contrôle & traçabilité</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Engagements -->
+    <div style="margin-top:48px;">
+      <div class="section-label">Notre promesse</div>
+      <h3 style="font-family:'Fraunces',serif;font-size:24px;color:var(--bleu);margin-bottom:8px;">Nos engagements qualité</h3>
+      <div class="engagements-list">
+        <div class="eng-item">Agents formés aux protocoles de bionettoyage</div>
+        <div class="eng-item">Produits virucides et bactéricides homologués</div>
+        <div class="eng-item">Équipements EPI complets à chaque intervention</div>
+        <div class="eng-item">Respect des circuits propre/sale</div>
+        <div class="eng-item">Rapport d'intervention et traçabilité</div>
+        <div class="eng-item">Disponible 7j/7 selon vos besoins</div>
+        <div class="eng-item">Confidentialité et discrétion assurées</div>
+        <div class="eng-item">Intervention planifiée ou d'urgence</div>
+      </div>
+    </div>
+
+    <div class="devis-banner">
+      <h2>Besoin d'un bionettoyage médical ?</h2>
+      <p>Devis gratuit — Intervention rapide — Protocole certifié</p>
+      <a href="https://wa.me/221774371230" class="devis-btn" target="_blank">
+        Demander un devis sur WhatsApp
+      </a>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PAGE À PROPOS ===== -->
+<div id="page-apropos" class="page">
+  <section class="section">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-visual-logo">
+          <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAxtu8LudTthir4pEZWSg2wp1eYT_zi5DlJN6iIYDqKiv7Yd4b7xMcf8m1O6T43qV2v0FpSFFw73pWfKFwES6F7uwdTMu9xrEwKm-BjmS60MLHMGgtvdQsuW7TXR4mk0wanD3TaOgxGNTOTJIGz-_hQ9lTFUTz3T6aK5Pv2f666TRrHtFCrrMwD2HAPQkw=w16383" alt="Dem Jeyaa" onerror="this.style.display='none'">
+        </div>
+        <p class="about-quote">"La propreté professionnelle, partout où vous en avez besoin."</p>
+        <div class="about-stats-mini">
+          <div class="about-stat-mini"><div class="num">100%</div><div class="lbl">Satisfaction</div></div>
+          <div class="about-stat-mini"><div class="num">24h</div><div class="lbl">Intervention</div></div>
+          <div class="about-stat-mini"><div class="num">3</div><div class="lbl">Expertises</div></div>
+          <div class="about-stat-mini"><div class="num">5+</div><div class="lbl">Villes</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Qui sommes-nous</div>
+        <div class="section-title">Votre partenaire de confiance pour un environnement sain</div>
+        <p style="font-size:15px;color:var(--texte-soft);line-height:1.8;margin-bottom:28px;">
+          DEM JEYAA – Propreté & Confort est une entreprise sénégalaise spécialisée dans les solutions de nettoyage professionnel, industriel et biomédical. Nous intervenons auprès des entreprises, établissements de santé, industries et particuliers avec rigueur, discrétion et engagement.
+          <br><br>
+          Notre équipe qualifiée utilise des équipements modernes et des produits homologués pour garantir des résultats irréprochables, en toute sécurité pour vos équipes et votre environnement.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top:56px;">
+      <div class="section-label">Nos valeurs</div>
+      <h3 style="font-family:'Fraunces',serif;font-size:28px;color:var(--bleu);margin-bottom:24px;">Ce qui nous guide au quotidien</h3>
+      <div class="values-list">
+        <div class="value-item">
+          <div class="value-icon">🏆</div>
+          <div>
+            <h4>Qualité irréprochable</h4>
+            <p>Des prestations rigoureuses réalisées par des agents formés, avec des produits certifiés adaptés à chaque environnement.</p>
+          </div>
+        </div>
+        <div class="value-item" style="border-left-color:var(--bleu-mid);">
+          <div class="value-icon">⚡</div>
+          <div>
+            <h4>Réactivité & Disponibilité</h4>
+            <p>Interventions planifiées ou d'urgence, disponibles 7j/7 pour répondre à toutes vos exigences opérationnelles.</p>
+          </div>
+        </div>
+        <div class="value-item" style="border-left-color:var(--teal);">
+          <div class="value-icon">🌿</div>
+          <div>
+            <h4>Respect de l'environnement</h4>
+            <p>Utilisation privilégiée de produits écologiques et biodégradables pour préserver votre santé et notre planète.</p>
+          </div>
+        </div>
+        <div class="value-item" style="border-left-color:var(--orange);">
+          <div class="value-icon">🤝</div>
+          <div>
+            <h4>Discrétion & Professionnalisme</h4>
+            <p>Nos équipes interviennent en toute discrétion, uniformées et équipées, sans perturber votre activité quotidienne.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PAGE CONTACT ===== -->
+<div id="page-contact" class="page">
+  <section class="section">
+    <div class="section-label">Nous joindre</div>
+    <div class="section-title">Parlons de votre projet</div>
+    <p class="section-desc">Devis gratuit sous 24h. Aucun engagement. Notre équipe se déplace pour évaluer vos besoins.</p>
+
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Téléphone</h4>
+              <p><a href="tel:+221774371230">77 437 12 30</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div>
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/221774371230" target="_blank">Écrire sur WhatsApp</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:demjeyaadj@gmail.com">demjeyaadj@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Adresse</h4>
+              <p>Sacré Cœur, Dakar, Sénégal</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <h4>Disponibilité</h4>
+              <p>Lundi – Samedi, 7h – 19h</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-box">
+        <h3>Demande de devis</h3>
+        <div class="form-group">
+          <label>Nom & Prénom *</label>
+          <input type="text" placeholder="Votre nom complet">
+        </div>
+        <div class="form-group">
+          <label>Téléphone *</label>
+          <input type="tel" placeholder="Ex : 77 000 00 00">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="votre@email.com">
+        </div>
+        <div class="form-group">
+          <label>Type de service</label>
+          <select>
+            <option value="">Choisir un service...</option>
+            <option>Nettoyage de bureaux / locaux</option>
+            <option>Nettoyage industriel</option>
+            <option>Bionettoyage médical</option>
+            <option>Nettoyage fin de chantier</option>
+            <option>Nettoyage maison / appartement</option>
+            <option>Copropriété / immeuble</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Décrivez votre besoin (superficie, fréquence, localisation...)"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Envoyer ma demande →</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAxtu8LudTthir4pEZWSg2wp1eYT_zi5DlJN6iIYDqKiv7Yd4b7xMcf8m1O6T43qV2v0FpSFFw73pWfKFwES6F7uwdTMu9xrEwKm-BjmS60MLHMGgtvdQsuW7TXR4mk0wanD3TaOgxGNTOTJIGz-_hQ9lTFUTz3T6aK5Pv2f666TRrHtFCrrMwD2HAPQkw=w16383" alt="Dem Jeyaa" onerror="this.style.display='none'">
+      <p>Entreprise sénégalaise de nettoyage professionnel, industriel et bionettoyage médical. Intervenant à Dakar et dans tout le Sénégal.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a onclick="showPage('accueil')">Accueil</a></li>
+        <li><a onclick="showPage('services')">Nos services</a></li>
+        <li><a onclick="showPage('medical')">Bionettoyage médical</a></li>
+        <li><a onclick="showPage('apropos')">À propos</a></li>
+        <li><a onclick="showPage('contact')">Contact & Devis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><span>📞 77 437 12 30</span></li>
+        <li><span>✉️ demjeyaadj@gmail.com</span></li>
+        <li><span>📍 Sacré Cœur, Dakar</span></li>
+        <li><a href="https://wa.me/221774371230" target="_blank">💬 WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 DEM JEYAA – Propreté & Confort. Tous droits réservés.</p>
+    <p>Dakar, Sénégal</p>
+  </div>
+</footer>
+
+<!-- WhatsApp floating button -->
+<a href="https://wa.me/221774371230" class="whatsapp-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  WhatsApp
+</a>
+
+<script>
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const navEl = document.getElementById('nav-' + page);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+function submitForm() {
+  const name = document.querySelector('.contact-form-box input[type=text]').value;
+  const phone = document.querySelector('.contact-form-box input[type=tel]').value;
+  if (!name || !phone) {
+    alert('Veuillez remplir votre nom et téléphone.');
+    return;
+  }
+  const service = document.querySelector('.contact-form-box select').value;
+  const msg = document.querySelector('.contact-form-box textarea').value;
+  const text = `Bonjour DEM JEYAA,%0ANom : ${name}%0ATéléphone : ${phone}%0AService : ${service || 'Non précisé'}%0AMessage : ${msg || 'Demande de devis'}`;
+  window.open(`https://wa.me/221774371230?text=${text}`, '_blank');
+}
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+</script>
+</body>
+</html>
